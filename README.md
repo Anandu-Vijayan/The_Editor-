@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+The Editor
+LiveDocs is a real-time collaborative document editing application, inspired by Google Docs. Built with Next.js for the user interface, Liveblocks for real-time features, and styled with Tailwind CSS, this project showcases advanced web development skills and creates a seamless collaborative experience.
 
-## Getting Started
+🌟 Features
+Authentication: Secure user authentication using GitHub via NextAuth.
+Collaborative Text Editor: Real-time collaborative editing for multiple users.
+Document Management:
+Create: Easily create and auto-save new documents.
+Delete: Remove documents you own.
+Share: Share documents via email or link with customizable permissions.
+List: View all owned or shared documents with search and sorting options.
+Comments: Add inline and general comments, with threaded discussions.
+Active Collaborators: See real-time indicators of active collaborators.
+Notifications: Get notified about document shares, new comments, and collaborator activities.
+Responsive Design: Optimized for all devices.
+🛠 Tech Stack
+Next.js
+TypeScript
+Liveblocks
+Lexical Editor
+ShadCN
+Tailwind CSS
+🚀 Quick Start
+Follow these steps to set up the project locally:
 
-First, run the development server:
+Prerequisites
+Ensure you have the following installed:
 
-```bash
+Git
+Node.js
+npm (Node Package Manager)
+Installation
+Clone the Repository:
+
+bash
+Copy code
+git clone https://github.com/adrianhajdin/collaborative-editor.git
+cd collaborative-editor
+Install Dependencies:
+
+bash
+Copy code
+npm install
+Set Up Environment Variables:
+Create a .env file in the root directory with the following content:
+
+makefile
+Copy code
+# Clerk
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+# Liveblocks
+NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY=
+LIVEBLOCKS_SECRET_KEY=
+Replace the placeholder values with your actual Clerk & Liveblocks credentials.
+
+Running the Project:
+
+bash
+Copy code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧑‍🤝‍🧑 Community
+Need help or want to contribute? Join our active Discord community with over 34k+ members. It's a great place to ask questions, report bugs, and share your experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📄 License
+This project is licensed under the MIT License.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
