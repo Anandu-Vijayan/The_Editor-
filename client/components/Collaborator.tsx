@@ -2,13 +2,31 @@ import Image from 'next/image';
 import React, { useState } from 'react'
 import UserTypeSelector from './UserTypeSelector';
 import { Button } from './ui/button';
+import { removeCollaborator, updateDocumentAccess } from '@/lib/actions/room.actions';
 
 const Collaborator = ({ roomId, creatorId, collaborator, email, user }: CollaboratorProps) => {
     const [userType, setUserType] = useState(collaborator.userType)
     const [loading, setLoading] = useState(false);
 
-    const shareDocumentHandler = async (type: string) => { }
-    const removeCollaboratorHandler = async (email: string) => { }
+    const shareDocumentHandler = async (type: string) => {
+        setLoading(true);
+        await updateDocumentAccess({
+            roomId,
+            email,
+            userType: type as UserType,
+            updatedBy: user
+        });
+
+
+        setLoading(false);
+    }
+    const removeCollaboratorHandler = async (email: string) => {
+        setLoading(true);
+
+        await removeCollaborator({ roomId, email });
+
+        setLoading(false)
+    }
 
 
 
@@ -31,15 +49,15 @@ const Collaborator = ({ roomId, creatorId, collaborator, email, user }: Collabor
                     </p>
                 </div>
             </div>
-            {creatorId === collaborator.id ?(
+            {creatorId === collaborator.id ? (
                 <p className='text-sm text-blue-100'>Owner</p>
-            ):(
+            ) : (
                 <div className='flex items-center'>
-                    <UserTypeSelector 
-                    userType ={userType as UserType}
-                    setUserType={setUserType || 'viewer'}
-                    onClickHandler={shareDocumentHandler}/>
-                    <Button type="button" onClick={()=> removeCollaboratorHandler(collaborator.email)}>
+                    <UserTypeSelector
+                        userType={userType as UserType}
+                        setUserType={setUserType || 'viewer'}
+                        onClickHandler={shareDocumentHandler} />
+                    <Button type="button" onClick={() => removeCollaboratorHandler(collaborator.email)}>
                         Remove
                     </Button>
                 </div>

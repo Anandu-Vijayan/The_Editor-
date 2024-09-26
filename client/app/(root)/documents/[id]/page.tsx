@@ -20,12 +20,15 @@ const Document = async ({ params: { id } }: SearchParamProps) => {
 
   const usersData = users.map((user: User) => ({
     ...user,
-    userType: room.usersAccesses[user.email]?.includes('room:write')
+    userType: user?.email && room.usersAccesses[user.email]?.includes('room:write')
       ? 'editor'
       : 'viewer'
-  }))
+  }));
+  
 
   const currentUserType = room.usersAccesses[clerkUser.emailAddresses[0].emailAddress]?.includes('room:write') ? 'editor' : 'viewer';
+  console.log(currentUserType,"dfgsdsdfsdfsdf");
+  
 
   return (
     <main className="flex w-full flex-col">
